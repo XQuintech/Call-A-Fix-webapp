@@ -10,7 +10,7 @@ $(function() {
     },
     select: function(event, ui) {
       // Open requestform.html and pass the selected result
-      window.location.href = "/callafix-website/pages/appointment.html?selected=" + ui.item.label;
+      window.location.href = "/pages/appointment.html?selected=" + ui.item.label;
     }
   });   
 });

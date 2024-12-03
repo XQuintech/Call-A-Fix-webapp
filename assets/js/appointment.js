@@ -157,5 +157,5 @@ function showThankYouPage(requestId) {
   document.body.appendChild(thankYouMessage);
 
   // Optionally, you can redirect to a different page after a few seconds
-   setTimeout(() => window.location.href = '/callafix-website/index.html', 6000);
+   setTimeout(() => window.location.href = '/index.html', 6000);
 }
