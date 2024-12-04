@@ -1,4 +1,4 @@
-let currentTab = 0; // Initialize current tab to the first tab (0) 
+let currentTab = 0; // Initialize current tab to the first tab (0)
 showTab(currentTab); // Display the current tab
 
 function showTab(n) {
@@ -28,6 +28,7 @@ function nextPrev(n) {
   // If reached the end of the form, submit it
   if (currentTab >= tabs.length) {
     document.getElementById("serReqForm").submit();
+    submitForm();  // Handle form submission when we reach the last tab
     return false;
   }
 
@@ -88,3 +89,73 @@ window.onload = function() {
     selectedResultInput.value = selectedResult;
   }
 };
+
+// Form Submission
+function submitForm() {
+  const form = document.getElementById('serReqForm');
+  const formData = new FormData(form);
+  
+  // Handle file upload if there's a file
+  const fileInput = document.getElementById('myFile');
+  const file = fileInput.files[0];
+
+  if (file) {
+    const reader = new FileReader();
+    reader.onload = function(event) {
+      const base64file = event.target.result.split(',')[1]; // Get base64 string (exclude data URI part)
+      formData.append('base64file', base64file);
+      formData.append('fileName', file.name);
+      
+      // Submit the form data via Fetch API
+      fetch('https://script.google.com/macros/s/AKfycbzOPxoXDq6dlaBnW80Qb9W0tSLexhWlOGIjOlYUuvP7lZD6cfGi38ghEP3goqQxlNncOw/exec', {
+        method: 'POST',
+        body: formData,
+      })
+      .then(response => response.json())
+      .then(data => {
+        if (data.status === 'success') {
+          showThankYouPage(data.message); // Show the success page or message
+        } else {
+          alert('Error: ' + data.message);
+        }
+      })
+      .catch(error => {
+        console.error('Error:', error);
+        alert('An error occurred while submitting the form.');
+      });
+    };
+    reader.readAsDataURL(file); // Read the file as base64
+  } else {
+    // If no file is provided, submit the form without the file
+    fetch('https://script.google.com/macros/s/AKfycbzOPxoXDq6dlaBnW80Qb9W0tSLexhWlOGIjOlYUuvP7lZD6cfGi38ghEP3goqQxlNncOw/exec', {
+      method: 'POST',
+      body: formData,
+    })
+    .then(response => response.json())
+    .then(data => {
+      if (data.status === 'success') {
+        showThankYouPage(data.message); // Show the success page or message
+      } else {
+        alert('Error: ' + data.message);
+      }
+    })
+    .catch(error => {
+      console.error('Error:', error);
+      alert('An error occurred while submitting the form.');
+    });
+  }
+}
+
+// Function to show "Thank You" message or redirect to another page
+function showThankYouPage(requestId) {
+  // Hide the form
+  document.getElementById('serReqForm').style.display = "none";
+
+  // Show the success message
+  const thankYouMessage = document.createElement('div');
+  thankYouMessage.innerHTML = `<h2>Your Request Has Been Submitted Successfully!</h2><p> <strong>${requestId}</strong></p>`;
+  document.body.appendChild(thankYouMessage);
+
+  // Optionally, you can redirect to a different page after a few seconds
+   setTimeout(() => window.location.href = '/index.html', 6000);
+}

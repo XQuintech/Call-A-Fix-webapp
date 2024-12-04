@@ -94,7 +94,12 @@ window.onload = function() {
 function submitForm() {
   const form = document.getElementById('serReqForm');
   const formData = new FormData(form);
-  
+
+  // Get the submit button
+  const submitButton = document.getElementById('nextBtn'); // Assuming 'nextBtn' is the submit button
+  submitButton.innerHTML = 'Loading...';  // Change the button text to 'Loading'
+  submitButton.disabled = true;  // Disable the button to prevent multiple submissions
+
   // Handle file upload if there's a file
   const fileInput = document.getElementById('myFile');
   const file = fileInput.files[0];
@@ -122,6 +127,10 @@ function submitForm() {
       .catch(error => {
         console.error('Error:', error);
         alert('An error occurred while submitting the form.');
+      })
+      .finally(() => {
+        submitButton.innerHTML = 'Submit';  // Restore the button text
+        submitButton.disabled = false;  // Re-enable the button
       });
     };
     reader.readAsDataURL(file); // Read the file as base64
@@ -142,6 +151,10 @@ function submitForm() {
     .catch(error => {
       console.error('Error:', error);
       alert('An error occurred while submitting the form.');
+    })
+    .finally(() => {
+      submitButton.innerHTML = 'Submit';  // Restore the button text
+      submitButton.disabled = false;  // Re-enable the button
     });
   }
 }
@@ -153,9 +166,9 @@ function showThankYouPage(requestId) {
 
   // Show the success message
   const thankYouMessage = document.createElement('div');
-  thankYouMessage.innerHTML = `<h2>Your Request Has Been Submitted Successfully!</h2><p> <strong>${requestId}</strong></p>`;
+  thankYouMessage.innerHTML = `<p>Your Request Has Been Submitted Successfully! </p><p><strong>${requestId}</strong></p><br>   You can refer to your Email. <br> Service Providers will contact you shortly.`;
   document.body.appendChild(thankYouMessage);
 
   // Optionally, you can redirect to a different page after a few seconds
-   setTimeout(() => window.location.href = '/index.html', 6000);
+   setTimeout(() => window.location.href = '/pages/services.html', 12000);
 }
