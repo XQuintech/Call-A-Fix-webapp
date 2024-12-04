@@ -636,85 +636,58 @@ class GenericTagLabelComment extends HTMLElement {
       this.innerHTML = `
       
 
-          <section id="tagLabelCommentContainer" class="abtServices">
-          <div id="tagLabelCommentContainer" class="abtServiceContainer">
-      
-              <!-- Tags  Labels and comment Section 
-              <div class="tags-section">
-                  <h5>Tags & Labels:</h5>
-                  <ul id="tags" class="tags">
-                      <li><a href="/tags/washing-machines">Washing Machines</a></li>
-                      <li><a href="/tags/appliance-repair">Appliance Repair</a></li>
-                      <li><a href="/tags/laundry">Laundry</a></li>
-                      <li><a href="/tags/maintenance">Maintenance</a></li>
-                      <li><a href="/tags/household-appliances">Household Appliances</a></li>
-                      <li><a href="/tags/painting-services">Painting Services</a></li>
-                      <li><a href="/tags/real-estate">Real Estate Services</a></li>
-                      <li><a href="/tags/building-construction">Building Construction</a></li>
-                      <li><a href="/tags/building-maintenance">Building Maintenance</a></li>
-                      <li><a href="/tags/plumbing">Plumbing Services</a></li>
-                      <li><a href="/tags/borehole-services">Borehole Services</a></li>
-                      <li><a href="/tags/car-repair">Car Repair</a></li>
-                      <li><a href="/tags/generator-repair">Generator Repair Services</a></li>
-                      <li><a href="/tags/damp-proofing">Damp Proofing Services</a></li>
-                      <li><a href="/tags/solar-inverter">Solar Inverter Services</a></li>
-                      <li><a href="/tags/cleaning-fumigation">Cleaning and Fumigation Services</a></li>
-                      <li><a href="/tags/electrical-wiring">Electrical Wiring Services</a></li>
-                      <li><a href="/tags/web-design-development">Web Design and Development</a></li>
-                  </ul>
-              </div>
-              -->
-      
-              <!-- Related Links to Similar Pages -->
-      <div class="related-links">
-          <h5>Related Pages:</h5>
-          <ul>
-          <!-- Appliance Repair Services -->
-          <li><a href="/pages/services/air-conditioners.html">Air Conditioner Repair Services in Nigeria</a></li>
-          <li><a href="/pages/services/refrigerators.html">Refrigerator Repair Services in Nigeria</a></li>
-          <li><a href="/pages/services/generator-repair.html">Generator Repair Services in Nigeria</a></li>
-          <li><a href="/pages/services/tv-repair.html">TV Repairs in Nigeria</a></li>
-          <li><a href="/pages/services/washing-machine.html">Washing Machine Repair Services in Nigeria</a></li>
-      
-          <!-- Home and Building Services -->
-          <li><a href="/pages/services/building-construction.html">Building Construction Services in Nigeria</a></li>
-          <li><a href="/pages/services/plumbing-services.html">Plumbing Services in Nigeria</a></li>
-          <li><a href="/pages/services/cleaning-and-fumigation.html">Cleaning and Fumigation Services in Nigeria</a></li>
-          <li><a href="/pages/services/mould-removal.html">Mould Inspection and Removal Services in Nigeria</a></li>
-          <li><a href="/pages/services/damp-proofing.html">Damp Proofing Services in Nigeria</a></li>
-      
-          <!-- Water & Energy Services -->
-          <li><a href="/pages/services/borehole.html">Borehole Services in Nigeria</a></li>
-          <li><a href="/pages/services/water-treatment.html">Water Treatment Services in Nigeria</a></li>
-          <li><a href="/pages/services/solar-inverter.html">Solar Inverter Services in Nigeria</a></li>
-      
-          <!-- Auto and Real Estate Services -->
-          <li><a href="/pages/services/auto-repair.html">Car Repair Services in Nigeria</a></li>
-          <li><a href="/pages/services/real-estate-services.html">Real Estate Services in Nigeria</a></li>
-      
-          <!-- Technology Services -->
-          <li><a href="/pages/services/web-design.html">Web Design and Development Services in Nigeria</a></li>
-      </ul>
+      <section id="tagLabelCommentContainer" class="abtServices">
+            <div id="tagLabelCommentContainer" class="abtServiceContainer">
+             
+                <!-- Related Links to Similar Pages -->
+        <div class="related-links">
+            <h5>Related Pages:</h5>
+            <ul>
+            <!-- Appliance Repair Services -->
+            <li><a href="/pages/services/air-conditioners.html">Air Conditioner Repair Services in Nigeria</a></li>
+            <li><a href="/pages/services/refrigerators.html">Refrigerator Repair Services in Nigeria</a></li>
+            <li><a href="/pages/services/generator-repair.html">Generator Repair Services in Nigeria</a></li>
+            <li><a href="/pages/services/tv-repair.html">TV Repairs in Nigeria</a></li>
+            <li><a href="/pages/services/washing-machine.html">Washing Machine Repair Services in Nigeria</a></li>
+        
+            <!-- Home and Building Services -->
+            <li><a href="/pages/services/building-construction.html">Building Construction Services in Nigeria</a></li>
+            <li><a href="/pages/services/plumbing-services.html">Plumbing Services in Nigeria</a></li>
+            <li><a href="/pages/services/cleaning-and-fumigation.html">Cleaning and Fumigation Services in Nigeria</a></li>
+            <li><a href="/pages/services/mould-removal.html">Mould Inspection and Removal Services in Nigeria</a></li>
+            <li><a href="/pages/services/damp-proofing.html">Damp Proofing Services in Nigeria</a></li>
+        
+            <!-- Water & Energy Services -->
+            <li><a href="/pages/services/borehole.html">Borehole Services in Nigeria</a></li>
+            <li><a href="/pages/services/water-treatment.html">Water Treatment Services in Nigeria</a></li>
+            <li><a href="/pages/services/solar-inverter.html">Solar Inverter Services in Nigeria</a></li>
+        
+            <!-- Auto and Real Estate Services -->
+            <li><a href="/pages/services/auto-repair.html">Car Repair Services in Nigeria</a></li>
+            <li><a href="/pages/services/real-estate-services.html">Real Estate Services in Nigeria</a></li>
+        
+            <!-- Technology Services -->
+            <li><a href="/pages/services/web-design.html">Web Design and Development Services in Nigeria</a></li>
+        </ul>
+    </div>
+  
+  <!-- Comment Section -->
+  <div class="comments-section">
+    <h5>Leave a Comment:</h5>
+    <form id="commentForm" class="comment-form">    
+        <textarea name="comment" id="comment" rows="5" placeholder="Write your comment here..." required></textarea>
+        <input type="text" id="name" name="name" placeholder="Enter Your Name" required>
+        <button type="submit" class="submit-comment">Post Comment</button>
+    </form>
+    <div id="comments-list">
+        <h6>Recent Comments:</h6>
+        <ul id="commentsList">
+            <!-- Comments will be dynamically loaded here -->
+        </ul>
+    </div>
   </div>
-
-<!-- Comment Section -->
-<div class="comments-section">
-  <h5>Leave a Comment:</h5>
-  <form id="commentForm" class="comment-form">    
-      <textarea name="comment" id="comment" rows="5" placeholder="Write your comment here..." required></textarea>
-      <input type="text" id="name" name="name" placeholder="Enter Your Name" required>
-      <button type="submit" class="submit-comment">Post Comment</button>
-  </form>
-  <div id="comments-list">
-      <h6>Recent Comments:</h6>
-      <ul id="commentsList">
-          <!-- Comments will be dynamically loaded here -->
-      </ul>
-  </div>
-</div>
-          </div>
-      </section>
-
+            </div>
+        </section>  
 
         `;
     }
@@ -857,7 +830,7 @@ class GenericFooter extends HTMLElement {
 </div>
 </div>
     <div class="Copyright">
-     <p> Copyright © 2024 Call A Fix Eng. Services I <a href="/pages/policyandterms.html">Privacy policy and Terms of service</a> </p>
+     <p> Copyright © 2024 Call A Fix Eng. Services I <a href="/pages/policyandterms.html"> Policy and Terms of service</a> </p>
 
 
     </div>
