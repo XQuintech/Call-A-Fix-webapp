@@ -820,9 +820,8 @@ class GenericFooter extends HTMLElement {
 
     <h5>Contact Us</h5>
     <ul class="footer-ul3">
-      <p> callafix@gmail.com </p>
       <li><a href="https://tawk.to/chat/5d271a027a48df6da2440a40/default">Live Chat Us</a></li>
-      <li><a href="https://chat.whatsapp.com/J6UtEVqR8g89ZFhYpLz3Nc" target="_blank">Join Our WhatsApp Community</a></li>
+      <li><a href="https://chat.whatsapp.com/J6UtEVqR8g89ZFhYpLz3Nc" target="_blank">Join WhatsApp Community of Service Providers</a></li>
       <p> Our lines are available 24/7! </p>
       
     </ul>

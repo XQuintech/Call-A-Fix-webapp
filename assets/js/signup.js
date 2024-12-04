@@ -53,6 +53,13 @@ function submitForm(event) {
     const form = document.getElementById('registeredbiz');
     const formData = new FormData(form);
 
+    // Get the submit button
+    const submitButton = document.getElementById('submitBtn');
+    
+    // Change the button text to "Loading"
+    submitButton.innerText = 'Loading...';
+    submitButton.disabled = true; // Optionally disable the button to prevent multiple submissions
+
     // Handle the CAC certificate file upload
     const fileInputCAC = document.getElementById('myFileCAC');
     const fileCAC = fileInputCAC.files[0];  // Get the file from the input
@@ -77,22 +84,21 @@ function submitForm(event) {
                     formData.append('fileName', file.name);
 
                     // Handle services selection (checkboxes or multi-select dropdown)
-                    const services = [];
+                    const selectedServices = [];
                     const serviceCheckboxes = document.querySelectorAll('input[name="services"]:checked'); // Get checked checkboxes
                     
                     serviceCheckboxes.forEach((checkbox) => {
-                        services.push(checkbox.value);  // Append the selected service to the services array
+                        selectedServices.push(checkbox.value);  // Append the selected service to the array
                     });
                     
-                    // Log services for debugging
-                    console.log("Selected services:", services);
+                    // Log selected services for debugging
+                    console.log("Selected services:", selectedServices);
                     
-                    // Append services to the form data
-                    formData.append('services', services.join(','));  // Join the services array into a string
-                    
+                    // Append selected services to the form data
+                    formData.append('selectedServices', selectedServices.join(','));  // Join the selected services into a comma-separated string
 
                     // Submit the form data via Fetch API
-                    fetch('https://script.google.com/macros/s/AKfycbyi5uJWw9Db3U0tnHoWoid4Z_NFGlih_jPyn3YHOaEfZpjNxw4RVml0G-4ts9EkMQ4C6A/exec', {
+                    fetch('https://script.google.com/macros/s/AKfycby0GFuLbUoom8jrmTLsp8MgtgG4UXMZAzw9ncqlQSpasU-eTES2UodENvRpc_4sklBZYg/exec', {
                         method: 'POST',
                         body: formData,
                     })
@@ -108,12 +114,17 @@ function submitForm(event) {
                     .catch(error => {
                         console.error('Error:', error);  // Log any error
                         alert('An error occurred while submitting the form.');
+                    })
+                    .finally(() => {
+                        // Restore the submit button text and enable it again after submission is complete
+                        submitButton.innerText = 'Submit';
+                        submitButton.disabled = false; // Re-enable the button
                     });
                 };
                 reader.readAsDataURL(file); // Read the business file as base64
             } else {
                 // If no files are provided, submit the form without files
-                fetch('https://script.google.com/macros/s/AKfycbyi5uJWw9Db3U0tnHoWoid4Z_NFGlih_jPyn3YHOaEfZpjNxw4RVml0G-4ts9EkMQ4C6A/exec', {
+                fetch('https://script.google.com/macros/s/AKfycby0GFuLbUoom8jrmTLsp8MgtgG4UXMZAzw9ncqlQSpasU-eTES2UodENvRpc_4sklBZYg/exec', {
                     method: 'POST',
                     body: formData,
                 })
@@ -129,6 +140,11 @@ function submitForm(event) {
                 .catch(error => {
                     console.error('Error:', error);  // Log any error
                     alert('An error occurred while submitting the form.');
+                })
+                .finally(() => {
+                    // Restore the submit button text and enable it again after submission is complete
+                    submitButton.innerText = 'Submit';
+                    submitButton.disabled = false; // Re-enable the button
                 });
             }
         };
@@ -137,15 +153,15 @@ function submitForm(event) {
         console.log("No CAC file selected.");
     }
 
-
-    // Log form data before submission
-for (let pair of formData.entries()) {
-    console.log(pair[0] + ": " + pair[1]);
+    // Log form data before submission for debugging
+    for (let pair of formData.entries()) {
+        console.log(pair[0] + ": " + pair[1]);
+    }
 }
 
 
 
-}
+
 
 // Function to show "Thank You" message or redirect to another page
 function showThankYouPage(cafId) {
@@ -154,11 +170,11 @@ function showThankYouPage(cafId) {
 
     // Show the success message
     const thankYouMessage = document.createElement('div');
-    thankYouMessage.innerHTML = `<h2>Your Request Has Been Submitted Successfully!</h2><p><strong>${cafId}</strong></p>`;
+    thankYouMessage.innerHTML = `<h2>Your Request Has Been Submitted Successfully!</h2><p><strong>${cafId}</strong> <br><br>  You can refer to your Email.<br> We will contact you shortly for verifications.</p>`;
     document.body.appendChild(thankYouMessage);
 
     // Optionally, redirect to a different page after a few seconds
-   // setTimeout(() => window.location.href = '/index.html', 6000);
+    setTimeout(() => window.location.href = '/pages/services.html', 15000);
 }
 
 // Initialize the form by showing the first step
